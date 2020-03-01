@@ -1,20 +1,19 @@
 package com.techstack.gcmm.formulary;
 
-import static org.junit.Assert.assertEquals;
+import com.techstack.gcmm.controller.api.PurchaseIndicator;
+import com.techstack.gcmm.controller.api.PurchaseOrderInfo;
+import com.techstack.gcmm.exception.CalculationException;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.runners.MockitoJUnitRunner;
-
-import com.techstack.gcmm.controller.api.PurchaseIndicator;
-import com.techstack.gcmm.controller.api.PurchaseOrderInfo;
-import com.techstack.gcmm.exception.CalculationException;
+import static org.junit.Assert.assertEquals;
 
 /**
  * 
@@ -28,7 +27,7 @@ public class CommonFormularyTest {
 	private CommonFormulary commonFormulary;
 
 	@Test
-	public void testCalculateRevenueYield() throws Exception {
+	public void testCalculateRevenueYield() {
 
 		BigDecimal givenRevenueYield = new BigDecimal(5.466666666666667).setScale(2, BigDecimal.ROUND_HALF_EVEN);
 
@@ -41,14 +40,14 @@ public class CommonFormularyTest {
 	}
 
 	@Test(expected = CalculationException.class)
-	public void testCalculateRevenueYield_WhenPriceIsZero() throws Exception {
+	public void testCalculateRevenueYield_WhenPriceIsZero() {
 
 		commonFormulary.calculateRevenueYield(new PurchaseOrderInfo(5, PurchaseIndicator.BUY, 0d));
 
 	}
 
 	@Test
-	public void testCalculateEarningRatio() throws Exception {
+	public void testCalculateEarningRatio() {
 
 		BigDecimal revenue = new BigDecimal(5.4666666666666665);
 
@@ -61,7 +60,7 @@ public class CommonFormularyTest {
 	}
 
 	@Test(expected = CalculationException.class)
-	public void testCalculateEarningRatio_WhenRevenueIsZero() throws Exception {
+	public void testCalculateEarningRatio_WhenRevenueIsZero() {
 
 		BigDecimal revenue = BigDecimal.ZERO;
 
@@ -70,7 +69,7 @@ public class CommonFormularyTest {
 	}
 
 	@Test
-	public void testCalculateVolumeWeightedAverage() throws Exception {
+	public void testCalculateVolumeWeightedAverage() {
 
 		BigDecimal expectedValue = BigDecimal.valueOf(23);
 
@@ -88,7 +87,7 @@ public class CommonFormularyTest {
 	}
 
 	@Test
-	public void testCalculateGeometricMean() throws Exception {
+	public void testCalculateGeometricMean() {
 
 		BigDecimal expectedValue = BigDecimal.valueOf(21.779385873464317);
 
@@ -105,13 +104,13 @@ public class CommonFormularyTest {
 	}
 
 	@Test(expected = CalculationException.class)
-	public void testCalculateGeometricMean_withEmptyCollection() throws Exception {
+	public void testCalculateGeometricMean_withEmptyCollection() {
 		List<PurchaseOrderInfo> purchaseOrderInfos = Collections.emptyList();
 		commonFormulary.calculateGeometricMean(purchaseOrderInfos);
 	}
 
 	@Test(expected = CalculationException.class)
-	public void testCalculateGeometricMean_withNullCollection() throws Exception {
+	public void testCalculateGeometricMean_withNullCollection() {
 		List<PurchaseOrderInfo> purchaseOrderInfos = null;
 		commonFormulary.calculateGeometricMean(purchaseOrderInfos);
 	}

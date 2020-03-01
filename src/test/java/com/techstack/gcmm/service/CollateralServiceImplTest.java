@@ -1,25 +1,24 @@
 package com.techstack.gcmm.service;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Matchers.anyCollection;
-import static org.mockito.Matchers.anyList;
-import static org.mockito.Mockito.atLeastOnce;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
-import java.math.BigDecimal;
-import java.util.Collections;
-
+import com.techstack.gcmm.controller.api.CalculationResultInfo;
+import com.techstack.gcmm.controller.api.PurchaseOrderInfo;
+import com.techstack.gcmm.formulary.CommonFormulary;
+import com.techstack.gcmm.repository.CollateralRepositoryImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.techstack.gcmm.controller.api.CalculationResultInfo;
-import com.techstack.gcmm.controller.api.PurchaseOrderInfo;
-import com.techstack.gcmm.formulary.CommonFormulary;
-import com.techstack.gcmm.repository.CollateralRepositoryImpl;
+import java.math.BigDecimal;
+import java.util.Collections;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.anyCollection;
+import static org.mockito.Matchers.anyList;
+import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * 
@@ -39,7 +38,7 @@ public class CollateralServiceImplTest {
 	private CollateralService collateralService = new CollateralServiceImpl();
 
 	@Test
-	public void testProcessPurchaseOrder() throws Exception {
+	public void testProcessPurchaseOrder() {
 
 		PurchaseOrderInfo purchaseOrderInfo = new PurchaseOrderInfo();
 
@@ -57,7 +56,7 @@ public class CollateralServiceImplTest {
 
 	@SuppressWarnings("unchecked")
 	@Test(expected = Exception.class)
-	public void testProcessPurchaseOrderShouldThrowAnException() throws Exception {
+	public void testProcessPurchaseOrderShouldThrowAnException() {
 
 		PurchaseOrderInfo purchaseOrderInfo = new PurchaseOrderInfo();
 
@@ -72,7 +71,7 @@ public class CollateralServiceImplTest {
 
 	@SuppressWarnings("unchecked")
 	@Test
-	public void testGetVolumeWeightedOilPrice() throws Exception {
+	public void testGetVolumeWeightedOilPrice() {
 
 		when(collateralRepository.findLatestTransactionWithinLast30Minutes()).thenReturn(anyList());
 
@@ -86,7 +85,7 @@ public class CollateralServiceImplTest {
 
 	@SuppressWarnings("unchecked")
 	@Test(expected = Exception.class)
-	public void testGetVolumeWeightedOilPriceShouldReturnAnException() throws Exception {
+	public void testGetVolumeWeightedOilPriceShouldReturnAnException() {
 
 		when(collateralRepository.findLatestTransactionWithinLast30Minutes()).thenThrow(Exception.class);
 
@@ -98,7 +97,7 @@ public class CollateralServiceImplTest {
 
 	@SuppressWarnings("unchecked")
 	@Test
-	public void testGetInventoryIndex() throws Exception {
+	public void testGetInventoryIndex() {
 
 		when(commonFormulary.calculateGeometricMean(anyCollection())).thenReturn(BigDecimal.ONE);
 
@@ -112,7 +111,7 @@ public class CollateralServiceImplTest {
 
 	@SuppressWarnings("unchecked")
 	@Test(expected = Exception.class)
-	public void testGetInventoryIndexShouldThrowAnException() throws Exception {
+	public void testGetInventoryIndexShouldThrowAnException() {
 
 		when(commonFormulary.calculateGeometricMean(anyCollection())).thenThrow(Exception.class);
 

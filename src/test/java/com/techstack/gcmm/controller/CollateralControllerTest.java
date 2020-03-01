@@ -1,11 +1,8 @@
 package com.techstack.gcmm.controller;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.when;
-//import static org.mockito.Mockito;
-
-import java.math.BigDecimal;
-
+import com.techstack.gcmm.controller.api.CalculationResultInfo;
+import com.techstack.gcmm.controller.api.PurchaseOrderInfo;
+import com.techstack.gcmm.service.CollateralService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -14,9 +11,10 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.techstack.gcmm.controller.api.CalculationResultInfo;
-import com.techstack.gcmm.controller.api.PurchaseOrderInfo;
-import com.techstack.gcmm.service.CollateralService;
+import java.math.BigDecimal;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
 
 /**
  * 
@@ -30,10 +28,10 @@ public class CollateralControllerTest {
 	private CollateralService collateralService;
 
 	@InjectMocks
-	private CollateralController controller; // = new CollateralController();
+	private CollateralController controller;
 
 	@Test
-	public void testProcessPurchaseOrder() throws Exception {
+	public void testProcessPurchaseOrder() {
 
 		PurchaseOrderInfo purchaseOrderInfo = new PurchaseOrderInfo();
 		CalculationResultInfo calculationResultInfo = getCalculationInfo();
@@ -48,7 +46,7 @@ public class CollateralControllerTest {
 
 	@SuppressWarnings("unchecked")
 	@Test(expected = Exception.class)
-	public void testProcessPurchaseOrderShouldThrowAnException() throws Exception {
+	public void testProcessPurchaseOrderShouldThrowAnException() {
 
 		PurchaseOrderInfo purchaseOrderInfo = new PurchaseOrderInfo();
 
@@ -59,7 +57,7 @@ public class CollateralControllerTest {
 	}
 
 	@Test
-	public void testGetVolumeWeightedOilPrice() throws Exception {
+	public void testGetVolumeWeightedOilPrice() {
 
 		CalculationResultInfo calculationResultInfo = getCalculationInfo();
 
@@ -73,7 +71,7 @@ public class CollateralControllerTest {
 
 	@SuppressWarnings("unchecked")
 	@Test(expected = Exception.class)
-	public void testGetVolumeWeightedOilPriceShouldThorwAnException() throws Exception {
+	public void testGetVolumeWeightedOilPriceShouldThorwAnException() {
 
 		when(collateralService.getVolumeWeightedOilPrice()).thenThrow(Exception.class);
 
@@ -81,7 +79,7 @@ public class CollateralControllerTest {
 	}
 
 	@Test
-	public void testGetInventoryIndex() throws Exception {
+	public void testGetInventoryIndex() {
 
 		CalculationResultInfo calculationResultInfo = getCalculationInfo();
 
@@ -95,7 +93,7 @@ public class CollateralControllerTest {
 
 	@SuppressWarnings("unchecked")
 	@Test(expected = Exception.class)
-	public void testGetInventoryIndexShouldReturnAnException() throws Exception {
+	public void testGetInventoryIndexShouldReturnAnException() {
 
 		when(collateralService.getInventoryIndex()).thenThrow(Exception.class);
 
