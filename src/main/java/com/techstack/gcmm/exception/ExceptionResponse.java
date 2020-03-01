@@ -1,8 +1,7 @@
 package com.techstack.gcmm.exception;
 
-import org.springframework.http.HttpStatus;
-
 import lombok.Getter;
+import org.springframework.http.HttpStatus;
 
 /**
  * This ExceptionResponse prepares whenever system behaves wrongly and the same

@@ -1,5 +1,10 @@
 package com.techstack.gcmm.formulary;
 
+import com.techstack.gcmm.controller.api.PurchaseOrderInfo;
+import com.techstack.gcmm.exception.CalculationException;
+import org.springframework.stereotype.Service;
+
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Collection;
@@ -9,13 +14,6 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import javax.validation.constraints.NotNull;
-
-import org.springframework.stereotype.Service;
-
-import com.techstack.gcmm.controller.api.PurchaseOrderInfo;
-import com.techstack.gcmm.exception.CalculationException;
 
 /**
  * This class provides business functionality related to Global Collateral and
@@ -70,7 +68,6 @@ public class CommonFormulary {
 	 * @return double
 	 * @throws CalculationException
 	 */
-	@SuppressWarnings("incomplete-switch")
 	private double calculateRevenueYieldForStandard(OilSpecification oilId, final double price)
 			throws CalculationException {
 
@@ -96,7 +93,6 @@ public class CommonFormulary {
 	 * @return double
 	 * @throws CalculationException
 	 */
-	@SuppressWarnings("incomplete-switch")
 	private double calculateRevenueYieldForPremium(OilSpecification oilId, double price) throws CalculationException {
 		Double revenueYield = null;
 

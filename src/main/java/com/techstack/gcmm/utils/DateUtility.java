@@ -16,7 +16,7 @@ public final class DateUtility {
 
 	/**
 	 * This Utility method takes two LocalDateTime as it's input followed by minutes
-	 * to perform the given two dates are is in 30 minutes range
+	 * to perform the given two dates are within given minutes range
 	 * 
 	 * 
 	 * @param from              LocalDateTime
@@ -24,10 +24,10 @@ public final class DateUtility {
 	 * @param durationInMinutes
 	 * @return boolean
 	 */
-	public static boolean isFallIn30MinutesRange(LocalDateTime from, LocalDateTime to, final long durationInMinutes) {
+	public static boolean isDatesFallInGivenMinutesRange(LocalDateTime from, LocalDateTime to, final long durationInMinutes) {
 
 		long diff = Math.abs(ChronoUnit.MINUTES.between(to, from));
-		return diff <= durationInMinutes ? true : false;
+		return diff <= durationInMinutes;
 
 	}
 

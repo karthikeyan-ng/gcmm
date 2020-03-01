@@ -1,5 +1,10 @@
 package com.techstack.gcmm.controller;
 
+import com.techstack.gcmm.controller.api.CalculationResultInfo;
+import com.techstack.gcmm.controller.api.PurchaseOrderInfo;
+import com.techstack.gcmm.service.CollateralService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,13 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.techstack.gcmm.controller.api.CalculationResultInfo;
-import com.techstack.gcmm.controller.api.PurchaseOrderInfo;
-import com.techstack.gcmm.service.CollateralService;
-
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 
 /**
  * Global Collateral and Margin Management Controller will execute various Rest

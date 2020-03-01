@@ -1,16 +1,15 @@
 package com.techstack.gcmm.service;
 
-import java.math.BigDecimal;
-import java.util.Collection;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.techstack.gcmm.controller.api.CalculationResultInfo;
 import com.techstack.gcmm.controller.api.PurchaseOrderInfo;
 import com.techstack.gcmm.formulary.CommonFormulary;
 import com.techstack.gcmm.repository.CollateralRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * This class is an implementation of {@link CollateralService}

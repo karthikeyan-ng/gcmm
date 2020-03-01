@@ -17,7 +17,7 @@ public class CollateralExceptionHandler {
 
 	@ExceptionHandler(CalculationException.class)
 	public final ResponseEntity<ExceptionResponse> handleCalculationException(final CalculationException e) {
-		ExceptionResponse response = ExceptionResponse.of(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		ExceptionResponse response = ExceptionResponse.of(e.getMessage(), HttpStatus.BAD_REQUEST);
 		return ResponseEntity.status(response.getStatus()).body(response);
 	}
 
